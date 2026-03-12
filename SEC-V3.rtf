@@ -1,0 +1,476 @@
+{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fmodern\fprq1\fcharset129 \'b1\'bc\'b8\'b2;}}
+{\colortbl ;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1042\b\f0\fs20 1. \'c1\'d6\'bc\'d2 \'b9\'d7 \'b6\'f3\'bf\'ec\'c6\'c3 \'bc\'b3\'c1\'a4\b0\par
+===\par
+sw1\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo ser\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+vlan 2\par
+vlan 3\par
+vlan 4\par
+vlan 6\par
+vlan 7\par
+vlan 8\par
+vlan 9\par
+vlan 10\par
+!\par
+int f1/1\par
+sw mo acc\par
+sw acc vlan 6\par
+!\par
+int f1/2\par
+sw mo acc\par
+sw acc vlan 4\par
+!\par
+int f1/3\par
+sw mo acc\par
+sw acc vlan 6\par
+!\par
+int f1/4\par
+sw mo acc\par
+sw acc vlan 6\par
+!\par
+int f1/5\par
+sw mo acc\par
+sw acc vlan 8\par
+!\par
+int vlan 2\par
+ip add 43.43.2.1 255.255.255.0\par
+!\par
+int lo150\par
+ip add 150.1.43.1 255.255.255.0\par
+!\par
+\b ip route 43.43.0.0 255.255.0.0 43.43.2.10\b0\par
+!\par
+---\par
+sw2\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/1\par
+sw mo acc\par
+sw acc vlan 3\par
+!\par
+int f1/3\par
+sw mo acc\par
+sw acc vlan 10\par
+!\par
+int f1/4\par
+sw mo acc\par
+sw acc vlan 9\par
+!\par
+int f1/5\par
+sw mo acc\par
+sw acc vlan 7\par
+! \par
+int f1/6\par
+no sw\par
+ip add 150.2.43.1 255.255.255.0\par
+!\par
+int vlan 9\par
+ip add 43.43.9.1 255.255.255.0\par
+!\par
+\b router os 1\par
+net 43.43.9.1 0.0.0.0 a 0\par
+redi conn sub\par
+!\par
+router bgp 43\par
+no auto\par
+no sync\par
+nei 150.2.43.254 remote 254\par
+!\par
+ip route 0.0.0.0 0.0.0.0 43.43.9.4\b0\par
+!\par
+---\par
+sw3\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/7\par
+sw mo acc\par
+sw acc vlan 3\par
+!\par
+int f1/8\par
+sw mo acc\par
+sw acc vlan 2\par
+!\par
+int f1/9\par
+sw mo acc\par
+sw acc vlan 4\par
+!\par
+int f1/15\par
+no sw\par
+ip add 150.3.43.1 255.255.255.0\par
+!\par
+int vlan 10\par
+ip add 43.43.10.1 255.255.255.0\par
+!\par
+\b router os 1\par
+net 43.43.10.1 0.0.0.0 a 0\par
+redi conn sub\par
+redi ei 100 sub\par
+!\par
+router ei 100\par
+no auto\par
+net 150.3.43.1 0.0.0.0\par
+!\par
+ip route 0.0.0.0 0.0.0.0 43.43.10.3\b0\par
+!\par
+---\par
+sw4\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/7\par
+sw mo acc\par
+sw acc vlan 6\par
+!\par
+int f1/8\par
+sw mo acc\par
+sw acc vlan 7\par
+!\par
+int f1/9\par
+sw mo acc\par
+sw acc vlan 6\par
+!\par
+int f1/10\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int f1/15\par
+no sw\par
+ip add 150.3.43.254 255.255.255.0\par
+!\par
+\b router ei 100\par
+no auto\par
+net 150.3.43.254 0.0.0.0\b0\par
+!\par
+---\par
+r1\par
+!\par
+int lo0\par
+ip add 192.168.1.1 255.255.255.255\par
+!\par
+int lo2\par
+ip add 43.43.51.1 255.255.255.255\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.6.1 255.255.255.0\par
+!\par
+int f0/1\par
+no sh\par
+ip add 43.43.3.1 255.255.255.0\par
+!\par
+\b router os 1\par
+router-id 1.1.1.1\par
+net 43.43.6.1 0.0.0.0 a 0\par
+net 43.43.51.1 0.0.0.0 a 0\par
+default-inf ori always\b0\par
+!\par
+---\par
+r2\par
+!\par
+int lo0\par
+ip add 192.168.2.2 255.255.255.255\par
+!\par
+int lo1\par
+ip add 192.168.22.22 255.255.255.255\par
+!\par
+int f0/0\par
+ip add 43.43.4.2 255.255.255.0\par
+!\par
+\b ip route 0.0.0.0 0.0.0.0 43.43.4.12\b0\par
+!\par
+---\par
+r3\par
+!\par
+int lo0\par
+ip add 192.168.3.3 255.255.255.255\par
+!\par
+int lo1\par
+ip add 192.168.33.33 255.255.255.255\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.6.3 255.255.255.0\par
+!\par
+int f0/1\par
+no sh\par
+ip add 43.43.10.3 255.255.255.0\par
+!\par
+\b router os 1\par
+router-id 3.3.3.3\par
+net 43.43.6.3 0.0.0.0 a 0\par
+net 43.43.10.3 0.0.0.0 a 0\par
+!\b0\par
+---\par
+r4\par
+!\par
+int lo0\par
+ip add 192.168.4.4 255.255.255.255\par
+!\par
+int f0/1\par
+no sh\par
+ip add 43.43.9.4 255.255.255.0\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.6.4 255.255.255.0\par
+!\par
+\b router os 1\par
+router-id 4.4.4.4\par
+net 43.43.9.4 0.0.0.0 a 0\par
+net 43.43.6.4 0.0.0.0 a 0\b0\par
+!\par
+---\par
+r5\par
+!\par
+int lo0\par
+ip add 192.168.5.5 255.255.255.255\par
+!\par
+int lo2\par
+ip add 43.43.52.5 255.255.255.255\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.8.5 255.255.255.0\par
+!\par
+int f0/1\par
+no sh\par
+ip add 43.43.7.5 255.255.255.0\par
+!\par
+\b router os 1\par
+router-id 5.5.5.5\par
+net 43.43.7.5 0.0.0.0 a 0\par
+net 43.43.8.5 0.0.0.0 a 0\par
+net 43.43.52.5 0.0.0.0 a 0\b0\par
+!\par
+---\par
+r6\par
+!\par
+int lo0\par
+ip add 192.168.6.6 255.255.255.255\par
+!\par
+int f0/1\par
+no sh\par
+ip add 150.2.43.254 255.255.255.0\par
+!\par
+\b route b 254\par
+no auto\par
+no sync\par
+nei 150.2.43.1 remote 43\b0\par
+!\par
+===\par
+\b 2. ASA 1\'bc\'b3\'c1\'a4\b0\par
+---\par
+asa1\par
+!\par
+mo multiple\par
+!\par
+---\par
+asa1\par
+!\par
+int e0\par
+no sh\par
+!\par
+int e1\par
+no sh\par
+!\par
+int e2\par
+no sh\par
+!\par
+admin-context admin\par
+context admin\par
+config-u admin.cfg\par
+!\par
+context c1\par
+config-u c1.cfg\par
+allocate-int e0\par
+allocate-int e1\par
+!\par
+context c2\par
+config-u c2.cfg\par
+allocate-int e0\par
+allocate-int e2\par
+!\par
+\cf1\b mac-add auto\cf0\b0\par
+!\par
+ch con c1\par
+!\par
+int e1\par
+nameif inside\par
+ip add 43.43.2.10 255.255.255.0\par
+!\par
+int e0\par
+nameif outside\par
+ip add 43.43.3.10 255.255.255.0\par
+!\par
+route outside 0 0 43.43.3.1\par
+route inside 150.1.0.0 255.255.0.0 43.43.2.1\par
+!\par
+access-l acl_oi per icmp a a\par
+access-g acl_oi in int outside\par
+!\par
+ch con c2\par
+!\par
+int e2\par
+nameif inside\par
+ip add 43.43.4.12 255.255.255.0\par
+!\par
+int e0\par
+nameif outside\par
+ip add 43.43.3.12 255.255.255.0\par
+!\par
+route outside 0 0 43.43.3.1\par
+route outside 150.1.0.0 255.255.0.0 43.43.3.10\par
+route inside 192.168.2.0 255.255.255.0 43.43.4.2\par
+!\par
+access-l acl_oi per icmp a a\par
+access-g acl_oi in int outside\par
+!\par
+===\par
+\b 3. asa2 \'bc\'b3\'c1\'a4\b0\par
+---\par
+asa2\par
+\par
+mo single\par
+!\par
+---\par
+int e0\par
+no sh\par
+!\par
+int e1\par
+no sh\par
+!\par
+int e2\par
+no sh\par
+!\par
+\cf1\b int re 1\par
+member-int e0\par
+member-int e2\par
+nameif outside\par
+ip add 43.43.6.10 255.255.255.0\cf0\b0\par
+!\par
+int e1\par
+nameif inside\par
+ip add 43.43.7.10 255.255.255.0\par
+!\par
+\cf1\b redundant-int re1 active-mem e0\cf0\b0\par
+!\par
+access-l acl_oi per icmp a a\par
+access-g acl_oi in int outside\par
+!\par
+router os 1\par
+net 43.43.6.0 255.255.255.0 a 0\par
+net 43.43.7.0 255.255.255.0 a 0\par
+!\par
+===\par
+\b 4. NAT\b0\par
+---\par
+access-l acl_oi per tcp ho 43.43.51.1 ho 43.43.52.5 eq 23\par
+access-l acl_oi per tcp ho 43.43.6.1 ho 43.43.52.5 eq 23\par
+!\par
+access-l acl_nat1 per ip ho 43.43.51.1 ho 43.43.52.5\par
+access-l acl_nat2 per ip ho 43.43.6.1 ho 43.43.52.5\par
+!\par
+static (outside,inside) 43.43.7.30 access-l acl_nat1\par
+static (outside,inside) 43.43.7.31 access-l acl_nat2\par
+!\par
+packet-tracer input outside tcp 43.43.51.1 1024 43.43.52.5 23\par
+packet-tracer input outside tcp 43.43.6.1 1024 43.43.52.5 23\par
+!\par
+access-l acl_st per 43.43.8.0 255.255.255.0 64.102.51.0 255.255.255.0\par
+!\par
+nat (inside) 1 access acl_st\par
+global (outside) 1 43.43.6.30\par
+!\par
+nat (inside) 2 43.43.8.0 255.255.255.0\par
+global (outside) 2 43.43.6.31\par
+!\par
+packet-tracer input inside icmp 43.43.8.1 8 0 64.102.51.1\par
+packet-tracer input inside icmp 43.43.8.1 8 0 43.43.4.2\par
+!\par
+===\par
+\b 5. ZBF\b0\par
+---\par
+r3\par
+!\par
+zone sec internal\par
+zone sec external\par
+!\par
+int f0/0\par
+zone-mem sec internal\par
+!\par
+int f0/1\par
+zone-mem sec external\par
+!\par
+policy-map t i Outbound-policy\par
+class  class-default\par
+inspect\par
+!\par
+zone-pair sec outbound so internal dest external\par
+service-p t i Outbound-policy\par
+!\par
+class-m t i cm_telnet\par
+mat pro telnet\par
+!\par
+class-m t i cm_icmp\par
+mat pro icmp\par
+!\par
+class-m t ti cm_http\par
+mat pro http\par
+!\par
+class-m t i http dcm_http\par
+mat req-resp header leng gt 1024\par
+!\par
+policy-map t i http dpm_http\par
+class t i http dcm_http\par
+reset\par
+!\par
+policy-map t i Inbound-policy\par
+class t i cm_icmp\par
+inspect\par
+police rate 20000 burst 2000\par
+!\par
+class-m t i cm_telnet\par
+inspect\par
+!\par
+class-m t i cm_http\par
+inspect\par
+service-p http dpm_http\par
+!\par
+zone-pair sec inbound so external dest internal\par
+service-p t i Inbound-policy\par
+!\par
+\par
+\par
+\par
+\par
+}
+ 

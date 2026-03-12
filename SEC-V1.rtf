@@ -1,0 +1,488 @@
+{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fmodern\fprq1\fcharset129 \'b1\'bc\'b8\'b2;}}
+{\colortbl ;\red255\green0\blue0;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\lang1042\b\f0\fs20 1. \'c1\'d6\'bc\'d2 \'b9\'d7 \'b6\'f3\'bf\'ec\'c6\'c3 \'bc\'b3\'c1\'a4\b0\par
+===\par
+sw1\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo ser\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+vlan 2\par
+vlan 3\par
+vlan 5\par
+vlan 25\par
+vlan 33\par
+vlan 55\par
+vlan 100\par
+vlan 155\par
+!\par
+int f1/1\par
+sw mo acc\par
+sw acc vlan 3\par
+!\par
+int f1/2\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int f1/3\par
+sw mo acc\par
+sw acc vlan 33\par
+!\par
+int f1/5\par
+sw mo acc\par
+sw acc vlan 155\par
+!\par
+int f1/11\par
+sw mo acc\par
+sw acc vlan 155\par
+!\par
+int vlan 155\par
+ip add 43.43.155.250 255.255.255.0\par
+!\par
+\b router ei 43\par
+no auto\par
+net 43.43.155.250 0.0.0.0\b0\par
+!\par
+---\par
+sw2\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/2\par
+sw mo acc\par
+sw acc vlan 25\par
+!\par
+int f1/5\par
+sw tr en dot\par
+sw mo tr\par
+sw tr all vlan 25,55,1,1002-1005\par
+! \par
+int vlan 55\par
+ip add 43.43.55.250 255.255.255.0\par
+!\par
+\b router ei 43\par
+no auto\par
+net 43.43.55.250 0.0.0.0\b0\par
+!\par
+---\par
+sw3\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/7\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int f1/8\par
+sw tr en dot\par
+sw mo tr\par
+sw tr all vlan 2,3,1,1002-1005\par
+!\par
+int f1/9\par
+sw mo acc\par
+sw acc vlan 100\par
+!\par
+int f1/10\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int vlan 33\par
+ip add 43.43.33.250 255.255.255.0\par
+!\par
+---\par
+sw4\par
+!\par
+int ran f1/13 - 15\par
+sw tr en dot\par
+sw mo tr\par
+!\par
+vtp mo client\par
+vtp do ccie\par
+vtp pass cisco\par
+!\par
+int f1/7\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int f1/8\par
+sw tr en dot\par
+sw mo tr\par
+sw tr all vlan 2,3,1,1002-1005\par
+!\par
+int f1/9\par
+sw mo acc\par
+sw acc vlan 100\par
+!\par
+int f1/10\par
+sw mo acc\par
+sw acc vlan 5\par
+!\par
+int vlan 2\par
+ip add 43.43.2.250 255.255.255.0\par
+!\par
+\b ip route 0.0.0.0 0.0.0.0 43.43.2.253\b0\par
+!\par
+---\par
+r1\par
+!\par
+int lo0\par
+ip add 43.43.0.1 255.255.255.255\par
+!\par
+int lo100\par
+ip add 111.111.111.111 255.255.255.0\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.3.1 255.255.255.0\par
+!\par
+\b ip route 0.0.0.0 0.0.0.0 43.43.3.253\b0\par
+!\par
+---\par
+r2\par
+!\par
+int lo0\par
+ip add 43.43.0.2 255.255.255.255\par
+!\par
+int lo100\par
+ip add 222.222.222.222 255.255.255.255\par
+!\par
+int f0/0\par
+ip add 43.43.5.2 255.255.255.0\par
+!\par
+int f0/1\par
+ip add 43.43.25.2 255.255.255.0\par
+!\par
+int s1/0\par
+en fram\par
+no fram inv\par
+no sh\par
+!\par
+int s1/0.24 m\par
+ip add 43.43.24.2 255.255.255.0\par
+fram map ip 43.43.24.4 204 br\par
+!\par
+int s1/0.23 m\par
+ip add 43.43.23.2 255.255.255.0\par
+fram map ip 43.43.23.3 203 br\par
+!\par
+\b router os 1\par
+rouer-id 43.43.0.2\par
+net 43.43.24.2 0.0.0.0 a 0\par
+net 43.43.23.2 0.0.0.0 a 0\par
+net 43.43.25.2 0.0.0.0 a 0\b0\par
+!\par
+\b ip route 0.0.0.0 0.0.0.0 43.43.5.253\b0\par
+!\par
+---\par
+r3\par
+!\par
+int lo0\par
+ip add 43.43.0.3 255.255.255.255\par
+!\par
+int f0/0\par
+ip add 43.43.33.3 255.255.255.0\par
+!\par
+int s1/0\par
+en fram\par
+no fram inv\par
+no sh\par
+!\par
+int s1/0.23 m\par
+ip add 43.43.23.3 255.255.255.0\par
+fram map ip 43.43.23.2 302 br\par
+!\par
+\b router os 1\par
+router-id 43.43.0.3\par
+net 43.43.23.3 0.0.0.0 a 0\b0\par
+!\par
+---\par
+r4\par
+!\par
+int lo0\par
+ip add 43.43.0.4 255.255.255.255\par
+!\par
+int s1/0\par
+en fram\par
+no fram inv\par
+no sh\par
+!\par
+int s1/0.24 m\par
+ip add 43.43.24.4 255.255.255.0\par
+fram map ip 43.43.24.2 402 br\par
+!\par
+\b router os 1\par
+router-id 43.43.0.4\par
+net 43.43.24.4 0.0.0.0 a 0\b0\par
+!\par
+---\par
+r5\par
+!\par
+int lo0\par
+ip add 43.43.0.5 255.255.255.255\par
+!\par
+int lo100\par
+ip add 155.155.155.155 255.255.255.255\par
+!\par
+int f0/0\par
+no sh\par
+ip add 43.43.155.5 255.255.255.0\par
+!\par
+int f0/1\par
+no sh\par
+!\par
+int f0/0.1.1\par
+en dot 55\par
+ip add 43.43.55.5 255.255.255.0\par
+!\par
+int f0/1.2\par
+en dot 25\par
+ip add 43.43.25.5 255.255.255.0\par
+!\par
+\b router os 1\par
+router-id 43.43.0.5\par
+net 43.43.25.5 0.0.0.0 a 0\par
+redi ei 43 met 1544 2000 255 1 1500\b0\par
+!\par
+\b router e 43\par
+no auto\par
+net 43.43.55.5 0.0.0.0\par
+net 43.43.155.5 0.0.0.0\par
+redi os 1 sub\b0\par
+!\par
+===\par
+\b 2. \'b6\'f3\'bf\'ec\'c6\'c3 \'bc\'b3\'c1\'a4\b0\par
+---\par
+r2\par
+!\par
+int s1/0.23\par
+ip os net broad\par
+!\par
+int s1/0.24\par
+ip os net broad\par
+!\par
+router os 1\par
+default-infor ori\par
+!\par
+---\par
+r3\par
+!\par
+int s1/0.23\par
+ip os net broad\par
+ip os pri 0\par
+!\par
+---\par
+r4\par
+!\par
+int s1/0.24\par
+ip os net broad\par
+ip os pri 0\par
+!\par
+===\par
+3. ASA \'bc\'b3\'c1\'a4\par
+---\par
+asa1\par
+!\par
+mo multiple\par
+!\par
+---\par
+asa 2\par
+!\par
+mo multiple\par
+!\par
+===\par
+4. ASA \'bc\'b3\'c1\'a4\par
+---\par
+asa2\par
+!\par
+int e0\par
+no sh\par
+!\par
+int e1\par
+no sh\par
+!\par
+int e2\par
+no sh\par
+!\par
+int e3\par
+no sh\par
+!\par
+no failover\par
+!\par
+failover lan unit sec\par
+failover lan int fover e2\par
+failover lan en\par
+failover link fover e2\par
+failover int ip fover 43.43.100.100 255.255.255.0 stand 43.43.100.101\par
+!\par
+failover\par
+!\par
+---\par
+asa1\par
+!\par
+int e0\par
+no sh\par
+!\par
+int e1\par
+no sh\par
+!\par
+int e2\par
+no sh\par
+!\par
+int e3\par
+no sh\par
+!\par
+no failover\par
+!\par
+failover lan unit pri\par
+failover lan int fover e2\par
+failover lan en\par
+failover link fover e2\par
+failover int ip fover 43.43.100.100 255.255.255.0 stand 43.43.100.101\par
+!\par
+failover\par
+!\par
+---\par
+asa1\par
+!\par
+int e1.3\par
+vlan 3\par
+!\par
+int e1.4\par
+vlan 4\par
+!\par
+int e1.2\par
+vlan 2\par
+!\par
+int re 1\par
+member-int e0\par
+member-int e3\par
+!\par
+admin-context admin\par
+context admin\par
+config-u admin.cfg\par
+allocate-int e1.2\par
+allocate-int re1\par
+!\par
+context R1\par
+config-u R1.cfg\par
+allocate-int e1.2\par
+allocate-int e1.4\par
+allocate-int re1\par
+!\par
+ch con admin\par
+!\par
+int e1.2\par
+nameif inside\par
+ip add 43.43.2.253 255.255.255.0 stand 43.43.2.254\par
+!\par
+int re1\par
+nameif outside\par
+secu 0\par
+ip add 43.43.5.253 255.255.255.0 stand 43.43.5.254\par
+!\par
+route outside 0 0 43.43.5.2\par
+route inside 150.1.43.0 255.255.255.0 43.43.2.250\par
+!\par
+access-l acl_oi per icmp a a\par
+access-l acl_oi in int outside\par
+!\par
+ch con R1\par
+!\par
+int e1.2\par
+nameif inside\par
+ip add 43.43.2.251 255.255.255.0 stand 43.43.2.252\par
+!\par
+int e1.3\par
+nameif DMZ3\par
+secu 100\par
+ip add 43.43.3.253 255.255.255.0 stand 43.43.3.254\par
+!\par
+int re 1\par
+nameif outside\par
+secu 0\par
+ip add 43.43.5.251 255.255.255.0 stand 43.43.5.250\par
+!\par
+route outside 0 0 43.43.5.2\par
+route inside 150.1.43.0 255.255.255.0 43.43.2.250\par
+route DMZ 43.43.0.1 255.255.255.255 43.43.3.1\par
+!\par
+access-l acl_oi per icmp a a\par
+access-l acl_oi in int outside\par
+!\par
+\cf1\b same-security-traffic per inter-interface\cf0\b0\par
+!\par
+ch sys\par
+!\par
+no fail\par
+!\par
+failover group 1\par
+preempt\par
+failover group 2\par
+secondary\par
+preempt\par
+!\par
+context admin\par
+join-failover-group 1\par
+!\par
+context R1\par
+join-failover-group 2\par
+!\par
+failover\par
+!\par
+---\par
+asa2\par
+!\par
+redundant-int re1 active-member e3\par
+!\par
+---\par
+R2\par
+!\par
+ip route 43.43.3.0 255.255.255.0 43.43.5.251\par
+!\par
+===\par
+\b 4. ASA NAT \'bc\'b3\'c1\'a4\b0\par
+---\par
+asa1-admin\par
+\par
+nat-control\par
+!\par
+access-l acl_nat1 per tcp ho 43.43.2.250 ho 43.43.5.2 eq 23\par
+access-l acl_nat2 per icmp ho 43.43.2.250 ho 43.43.5.2\par
+!\par
+nat (inside) 1 access acl_nat1\par
+global (outside) 1 43.43.5.100\par
+!\par
+nat (inside) 2 access acl_nat2\par
+global (outside) 2 43.43.5.99\par
+!\par
+static (inside,outside) 43.43.5.151 43.43.2.251 netmask 255.255.255.255 dns\par
+!\par
+---\par
+asa2-R1\par
+\par
+static (DMZ3,outside) 43.43.3.0 43.43.3.0 netmask 255.255.255.0\par
+static (DMZ3,outsdie) 43.43.0.1 43.43.0.1 netmask 255.255.255.255\par
+!\par
+===\par
+\par
+\par
+\par
+}
+ 
